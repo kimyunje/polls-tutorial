@@ -2,11 +2,7 @@
     {% if latest_question_list %}
         Hi {{ user.username }}!
         <p><a href="{% url 'logout' %}">logout</a></p>  
-        <h2>투표 문장 등록하기</h2>
-        <form action="{% url 'polls:add_question' %}" method="post">
-            <input type="text">
-            <input type="submit">
-        </form>
+        <a href="{% url 'polls:new' %}"><h2>투표 문장 등록하기</h2></a>
         <h2>현재 등록된 투표 질문 문장</h2>
         <ul>
         {% for question in latest_question_list %}

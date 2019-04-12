@@ -5,6 +5,7 @@ from .models import Choice, Question
 from django.contrib.auth.decorators import login_required, permission_required
 
 from django.urls import reverse
+from .form import PostForm
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
@@ -32,7 +33,7 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
-def add_question(request):
-    question = get_object_or_404(Question, pk=question_id)
-    add_question = question.question_text_set.get(pk=request.POST['question_text'])
-    return render(request, 'polls/add_question.html', {})
+
+def post_new(request):
+    form = PostForm()
+    return render(request, 'polls/new.html', {'form': form})
