@@ -2,15 +2,15 @@
     {% if latest_question_list %}
         Hi {{ user.username }}!
         <p><a href="{% url 'logout' %}">logout</a></p>  
-        <h2>문장 등록하기</h2>
-        <form action="post">
+        <h2>투표 문장 등록하기</h2>
+        <form action="{% url 'polls:add_question' %}" method="post">
             <input type="text">
             <input type="submit">
         </form>
-        <h2>현재 등록된 문장</h2>
+        <h2>현재 등록된 투표 질문 문장</h2>
         <ul>
         {% for question in latest_question_list %}
-            <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
