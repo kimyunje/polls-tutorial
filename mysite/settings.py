@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+
 # import django.contrib.auth
 # LOGIN_URL = '/login/'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -33,6 +34,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    # 'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,3 +124,32 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/polls/'
 LOGOUT_REDIRECT_URL = '/polls/'
+
+# SUIT_CONFIG = {
+#     # header
+#     'ADMIN_NAME': 'Django Suit',
+#     'HEADER_DATE_FORMAT': 'l, j. F Y',
+#     'HEADER_TIME_FORMAT': 'H:i',
+
+#     # forms
+#     'SHOW_REQUIRED_ASTERISK': True,  # Default True
+#     'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+#     # menu
+#     'SEARCH_URL': '/admin/auth/user/',
+#     'MENU_ICONS': {
+#        'sites': 'icon-leaf',
+#        'auth': 'icon-lock',
+#     },
+#     'MENU_OPEN_FIRST_CHILD': True, # Default True
+#     'MENU_EXCLUDE': ('auth.group',),
+#     'MENU': (
+#         'sites',
+#         {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+#         {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+#         {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+#     ),
+
+#     # misc
+#     'LIST_PER_PAGE': 15
+# }
