@@ -1,9 +1,23 @@
-{% if latest_question_list %}
-    <ul>
-    {% for question in latest_question_list %}
-        <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
-    {% endfor %}
-    </ul>
+{% if user.is_authenticated %}
+    {% if latest_question_list %}
+        Hi {{ user.username }}!
+        <p><a href="{% url 'logout' %}">logout</a></p>  
+        <h2>문장 등록하기</h2>
+        <form action="post">
+            <input type="text">
+            <input type="submit">
+        </form>
+        <h2>현재 등록된 문장</h2>
+        <ul>
+        {% for question in latest_question_list %}
+            <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+        <a href="{% url 'login' %}">login</a>
+    {% endif %}
 {% else %}
-    <p>No polls are available.</p>
+    <p>you are not logged in</p>
 {% endif %}
+

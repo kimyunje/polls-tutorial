@@ -2,8 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render
 
 from .models import Question
+from django.contrib.auth.decorators import login_required, permission_required
 
-
+# @permission_required('questions.add_question_text', login_url="/admin/login/")
+@login_required
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
     context = {'latest_question_list': latest_question_list}
